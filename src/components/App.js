@@ -10,9 +10,10 @@ console.log({ CATEGORIES, TASKS });
 function App() {
   //let filteredTasks = [...TASKS]
   const [tasks, setTasks] = useState(TASKS)
-  //const [category, setCategory] = useState("All")
+  const [category, setCategory] = useState("All")
 
   const handleSelectedCategory = (categorySelect) => {
+    setCategory(categorySelect)
     if (categorySelect !== "All") {
       const filteredTasks = TASKS.filter(task => task.category === categorySelect)
       setTasks(filteredTasks)
@@ -30,7 +31,7 @@ function App() {
   return (
     <div className="App">
       <h2>My tasks</h2>
-      <CategoryFilter categories={CATEGORIES} selectedCategory={handleSelectedCategory}/>
+      <CategoryFilter categories={CATEGORIES} category={category} selectedCategory={handleSelectedCategory}/>
       <NewTaskForm categories={CATEGORIES} onTaskFormSubmit={handleNewTask}/>
       <TaskList tasks={tasks}/>
     </div>

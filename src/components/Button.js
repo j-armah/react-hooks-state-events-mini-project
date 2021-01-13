@@ -1,15 +1,14 @@
 import React, { useState } from 'react'
 
-const Button = ({ category, selectedCategory }) => {
-    const [isClicked, setIsClicked] = useState("")
-
+const Button = ({ category, selectedCategory, toggleButton}) => {
+    
     const handleClick = (event) => {
-        setIsClicked("selected")
+        //onClick("selected")
         selectedCategory(category)
+        toggleButton(category)
     }
-
     return (
-        <button className={isClicked} onClick={handleClick}> {category} </button>
+        <button className="" onClick={handleClick}> {category} </button>
     )
 }
 
